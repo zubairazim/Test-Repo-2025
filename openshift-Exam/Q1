@@ -1,0 +1,70 @@
+Q1)
+- configure the Oauth server to use HTPasswd as the identity provider
+- Secret name should be `secure-secret` and Identity provider name should be `user-id`
+- Create user `sam` with password `lincoln`
+- Create user `nick` with password `nick123`
+- Create user `mike` with password `mike123`
+- Create user `steve` with password `steve123`
+- Create user `tim` with password `tim123`
+- Create user `garry` with password `garry123`
+- Create user `lerry` with password `lerry123`
+ 
+ 
+Resolved 
+ 1152  oc project
+ 1153  oc project default
+ 1154  oc project
+ 1155  clear
+ 1156  which htpasswd
+ 1157  htpasswd -c -B -b user.htpasswd sam lincoln
+ 1158  htpasswd -B -b user.htpasswd nick nick123
+ 1159  htpasswd -B -b user.htpasswd mike mike123
+ 1160  htpasswd -B -b user.htpasswd steve steve123
+ 1161  htpasswd -B -b user.htpasswd tim tim123
+ 1162  htpasswd -B -b user.htpasswd garry garry123
+ 1163  htpasswd -B -b user.htpasswd lerry lerry123
+ 1164  cat user.htpasswd
+ 1165  oc create secret generic secure-secret --from-file=htpasswd=user.htpasswd -n openshift-config
+ 1166  htpasswd -B -b user.htpasswd humtar humtar123
+ 1167  oc extract secret --help
+ 1168  oc extract secret/secure-secret --to=/tmp  --confirm -n openshift-config
+ 1169  cd /tmp
+ 1170  cat htpasswd
+ 1171  htpasswd -Bb /tmp/htpasswd  humtar humtar123
+ 1172  oc set data --help
+ 1173  oc set data secret/secure-secret --from-file htpasswd=/tmp/htpasswd -n openshift-config
+ 1174  cat /tmp/htpasswd
+ 1175  oc login -u kubeadmin -p GkE9i-xLaDE-2SDLe-AUDLg
+ 1176  oc whoami
+ 1177  clear
+ 1178  ls -l
+ 1179  cd
+ 1180  ls -l
+ 1181  clear
+ 1182  vi oauth.yaml
+ 1183  oc replace oauth.yaml
+ 1184  oc replace oauth.yaml -f
+ 1185  oc replace -f oauth.yaml
+ 1186  oc get pod -n openshift-authentication
+ 1187  w
+ 1188  oc get pod -n openshift-authentication -w
+ 1189  oc delete pod oauth-openshift-68fbb6cccd-ngvhc
+ 1190  oc delete pod oauth-openshift-68fbb6cccd-ngvhc -n openshift-authentication
+ 1191  clear
+ 1192  oc login -u sam -p lincoln
+ 1193  whoami
+ 1194  oc whoami
+ 1195  oc login humtar -p humtar123
+ 1196  oc login -u humtar -p humtar123
+ 1197  oc whoami
+ 1198  oc login -u mike -p mike123
+ 1199  oc login -u nick -p nick123
+ 1200  oc login -u tim -p tim123
+ 1201  oc login -u steve -p steve123
+ 1202  oc login -u garry -p garry123
+ 1203  oc login -u lerry -p lerry123
+ 1204  oc get users
+ 1205  oc login -u sam -p lincoln
+ 1206  oc get users
+ 1207  history
+[root@nfs ~]#
